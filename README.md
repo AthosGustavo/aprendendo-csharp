@@ -41,6 +41,12 @@ foreach(tipo variavel in nomeArray){}
   nomeVariavel.Add("cor", "branco");
   ```
 
+  **Remoção de elementos**
+  ```C#
+  meuDicionario.Remove("um");
+
+  ```
+  
   **Recuperando valores**
    - Para ter acesso a algum valor, basta usar a chave.
   ```C#
@@ -48,7 +54,7 @@ foreach(tipo variavel in nomeArray){}
   ```
 
   **TryGetValue**
-   - Verificação de chaves
+   - Pega o valor de uma chave
   ```
   if(nomeArray.TryGetValue("chave", out tipoVarial nomeVarial)){
   }
@@ -74,7 +80,23 @@ foreach(tipo variavel in nomeArray){}
         }
   ```
 
-  
+  **ContainsKey**
+   - Verifica se uma chave está presente em um dicionário
+   - Retorna true/false
+
+  ```C#
+  nomeArray.ContainsKey(nomeChave)
+  ```
+
+  **Iteração sobre elementos**
+  ```C#
+  foreach (var x in meuDicionario){
+    string chave = x.Key;
+    int valor = x.Value;
+    Console.WriteLine($"Chave: {chave}, Valor: {valor}");
+}
+
+  ```
   </details>
 </details>
 
