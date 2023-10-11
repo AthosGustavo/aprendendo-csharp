@@ -13,6 +13,8 @@
   Console.ReadLine();
    - Esse método e suas variáveis abre um input para o usuário.
 
+  Console.Clear();
+   - limpa o console
   
   
 </details>
