@@ -143,6 +143,34 @@ foreach(tipo variavel in nomeArray){}
 ```
  - Nesse caso, os atributos e o método resultado são de visibilidade publica e apenas o metodo media possui visibilidade privada, pois o objetivo é esconder a sua logica e apenas devolver o cálculo através do método resultado.
 
+## Encapsulamento
+
+ - Para atribuir o encapsulamento ao atributo privado, é necessário criar um atributo publico com o mesmo nome do atributo privado, mas a inicial deve ser em maiúsculo e no escopo desse novo atributo, basta declarar o get e set.
+
+**Exemplo**
+```C#
+private string nome;
+public string Nome{
+  get{return nome}
+  set{nome = value}
+}
+```
+*Atribuindo valor (SET)*
+```C#
+Pessoa pessoa1 = new Pessoa();
+pessoa1.Nome = "Athos";
+```
+*Acessando valor (GET)*
+```C#
+Console.Write(pessoa1.Nome);
+```
+
+
+
+
+
+
+
 
     
     
