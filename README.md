@@ -99,4 +99,53 @@ foreach(tipo variavel in nomeArray){}
   ```
   </details>
 </details>
+<details>
+  <summary>Orientação a objetos</summary>
+  <details>
+    <summary>Visibilidade, atributos e encapsulamento</summary>
+    
+  ## Visibilidade
+    
+  - **public ->** atributos e metodos visiveis em qualquer classe
+  - **private ->** atributos e metodos visiveis apenas na classe onde sao criadas
+  - **protected ->** atributos e metodos visiveis em classes onde sao criados ou herdados
+
+  - Geralmente um atributo privado e usado para esconder a lógica ou a regra de negocio de algo e
+  o seu valor e obtido atraves de um método publico
+
+  Exemplo
+  ```C#
+  public class CalculaNota{
+    public double nota1;
+    public double nota2;
+
+    private double media(){
+      return (nota1 + nota2)/2
+    }
+
+    public void resultado(){
+      Console.Write($"O resultado é {media()}")
+    }
+  }
+  ```
+  ```C#
+  using System;
+
+  class Application{
+    static void Main(string[] args){
+      CalculaNota calculaNota = new CalculaNota();
+      calculaNota.nota1 = 5;
+      calculaNota.nota2 = 7;
+      calculaNota.resultado();
+    }
+
+  }
+```
+ - Nesse caso, os atributos e o método resultado são de visibilidade publica e apenas o metodo media possui visibilidade privada, pois o objetivo é esconder a sua logica e apenas devolver o cálculo através do método resultado.
+
+
+    
+    
+  </details>
+</details>
 
