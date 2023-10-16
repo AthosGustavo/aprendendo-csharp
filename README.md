@@ -174,7 +174,11 @@ Console.Write(pessoa1.Nome);
     - O metodo original recebe: visibilidade virtual tipo nome(){}
     - O metodo sobrescrito recebe: visibilidade override tipo nome(){}
 
-     
+  ## namespace
+  
+  ## Internal class
+
+  
   </details>
 </details>
 
