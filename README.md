@@ -3,7 +3,7 @@
   <summary>Arquitetura</summary>
   <details>
     
-  <summary>namespace using</summary>
+  <summary>namespace,using e IDisposable</summary>
 
    ## namespace
  - namespace é uma propriedade usada como forma de agrupar e organizar código.Ela literalmente dá um nome para o espaço onde foi declarado tal código.
