@@ -285,3 +285,58 @@ Console.Write(pessoa1.Nome);
   </details>
 </details>
 
+<details>
+  <summary>HTTPClient</summary>
+
+  ## HttpClient
+  - Biblioteca usada para fazer solicitações HTTP a serviços web, como consumir APIs.
+
+    <details>
+      <summary>Requisições</summary>
+    <details>
+      <summary>Classe HttpResponseMessage</summary> 
+
+    ## Classe HttpResponseMessage
+     - Classe utilizada para manipular e tratar respostas de requisições
+
+    ### Métodos importantes da classe
+
+    **EnsureSuccessStatusCode()**
+     - Usado para verificar se uma resposta HTTP foi bem sucedida
+     - Caso a requisicao não for bem sucedida, uma execeção sem tratamento será lançada, caso o erro não ocorra, a execução continua e o método não retorna nada.
+    
+
+    </details>
+    <details>
+      <summary>Método GET</summary>      
+    </details>
+    <details>
+      <summary>Método POST</summary>      
+    </details>
+    <details>
+      <summary>Método PUT</summary>      
+    </details>
+    <details>
+      <summary>Método DELETE</summary>      
+    </details>
+      
+    </details>
+
+  
+
+  
+  
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
