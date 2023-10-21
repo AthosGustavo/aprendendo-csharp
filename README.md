@@ -1,5 +1,42 @@
 # Estudo sobre C#
+<details>
+  <summary>Arquitetura</summary>
+  <details>
+    
+  <summary>namespace using</summary>
 
+   ## namespace
+ - namespace é uma propriedade usada como forma de agrupar e organizar código.Ela literalmente dá um nome para o espaço onde foi declarado tal código.
+ - O namespace tem como objetivo melhorar a organização e permitir a declaração de variáveis com nome repetido, uma vez que para acessar essa variável é necessário informar o seu namespace. EXEMPLO
+    ```C#
+    nomeEspaço.nomeVariavel
+    ```
+ - Não é permitido declarar variáveis com mesmo nome dentro de um namespace
+
+   ## using
+
+   #### Importando namespace com using
+ - Nesse contexto a propriedade using permite importar namespaces para utilizar no código.Sendo assim, using é semelhante ao **import** utilizada no java.
+  ```C#
+  using System;
+  using System.Collections.Generic;
+
+    class Program
+    {
+      static void Main()
+      {
+        List<string> myList = new List<string>(); // Não é necessário usar System.Collections.Generic
+        Console.WriteLine("Hello, World!"); // Não é necessário usar System
+      }
+    }
+
+  ```
+
+  #### Declaração using para recursos descartáveis(IDisposable)
+  
+    
+  </details>
+</details>
 <details>
   <summary>Lógica de programação</summary>
 
