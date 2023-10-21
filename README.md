@@ -291,44 +291,61 @@ Console.Write(pessoa1.Nome);
   ## HttpClient
 - Biblioteca usada para fazer solicitações HTTP a serviços web, como consumir APIs.
 
-    <details>
+  <details>
       <summary>Requisições</summary>
     <details>
-      <summary>Classe HttpResponseMessage</summary> 
-
+      <summary>Classe HttpResponseMessage</summary>  
+        
     ## Classe HttpResponseMessage
 
-- Classe utilizada para manipular e tratar respostas de requisições
+    - Classe utilizada para manipular e tratar respostas de requisições
 
     ### Métodos importantes da classe
 
     **EnsureSuccessStatusCode()**
 
-- Usado para verificar se uma resposta HTTP foi bem sucedida
-- Caso a requisicao não for bem sucedida, uma execeção sem tratamento será lançada, caso o erro não ocorra, a execução continua e o método não retorna nada.
-    
+    - Usado para verificar se uma resposta HTTP foi bem sucedida
+    - Caso a requisicao não for bem sucedida, uma execeção sem tratamento será lançada, caso o erro não ocorra, a execução continua e o método não retorna nada.
+
+  ```C#
+  using System;
+  using System.Net.Http;
+  using System.Threading.Tasks;
+
+  class Program
+  {
+      static async Task Main()
+      {
+          // Crie uma instância de HttpClient.
+          using (HttpClient httpClient = new HttpClient())
+          {
+              string apiUrl = "https://jsonplaceholder.typicode.com/posts/101"; // URL inválida
+
+              try
+              {
+                  // Faça uma solicitação GET.
+                  HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+                  // Verifique se a solicitação foi bem-sucedida.
+                  response.EnsureSuccessStatusCode();
+
+              }
+              catch (HttpRequestException ex)
+              {
+                  // Trate a exceção se a solicitação não foi bem-sucedida.
+                  Console.WriteLine("Erro na solicitação: " + ex.Message);
+              }
+          }
+      }
+    }
+
+  ```
 
     </details>
-    <details>
-      <summary>Método GET</summary>      
-    </details>
-    <details>
-      <summary>Método POST</summary>      
-    </details>
-    <details>
-      <summary>Método PUT</summary>      
-    </details>
-    <details>
-      <summary>Método DELETE</summary>      
-    </details>
-      
-    </details>
-
-  
-
-  
-  
+  </details>
 </details>
+      
+    
 
 
 
