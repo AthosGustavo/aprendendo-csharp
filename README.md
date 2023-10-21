@@ -340,6 +340,10 @@ Console.Write(pessoa1.Nome);
     }
 
   ```
+  ### Propriedades mais importantes da classe
+
+  
+  
 
     </details>
   </details>
