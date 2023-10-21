@@ -36,10 +36,71 @@
    - Nesse contexto, using é usado para lidar com classes que implementam interface **IDisposable** que são objetos que necessitam ter recursos liberados após o seu uso.
 
   ##### Sintaxe
-   - using(instancia do objeto){utilização do objeto e os seus métodos}
+  ```C#
+  using(instancia do objeto){utilização do objeto e os seus métodos}
+  ```
+  ```C#
+  using System;
+  using System.Net.Http;
+  using System.Threading.Tasks;
+
+  class Program
+  {
+      static async Task Main()
+      {
+        using (HttpClient httpClient = new HttpClient())
+        {
+          string apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+          HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+          if (response.IsSuccessStatusCode)
+          {
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(jsonResponse);
+          }
+        } // O "using" garante que o HttpClient seja fechado e os recursos liberados aqui.
+    }
+}
+
+  ```
+
    - Ao declarar dessa forma,aṕos a passagem do compilador pelo escopo do using, os recursos serão automaticamente liberados sem ser necessário a declaração explícita do fechamento.
   
-    
+  ## Objetos IDisposable
+   - Objetos IDisposable são classes que implementam a interface IDisposable e necessitam ter os seus recursos fechados após o uso.
+   - O não fechamento desses recursos pode ocasionar vazamento de memória e perca de performance
+
+  #### Como identificar uma classe que implementa a interface IDisposable ?
+   - Se você estiver trabalhando com uma classe que interaja com recursos externos (por exemplo, abrindo arquivos ou estabelecendo conexões de rede), é importante considerar a liberação adequada desses recursos quando a classe não for mais necessária.
+
+  #### Fechamento explícito de um objeto IDisposable
+  ```C#
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        HttpClient httpClient = new HttpClient();
+        string apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+        HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+        if (response.IsSuccessStatusCode)
+        {
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(jsonResponse);
+        }
+
+        // Não estamos usando "using", então precisamos explicitamente chamar Dispose() para liberar os recursos.
+        httpClient.Dispose();
+    }
+}
+
+  ```
+
+
   </details>
 </details>
 <details>
