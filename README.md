@@ -33,6 +33,11 @@
   ```
 
   #### Declaração using para recursos descartáveis(IDisposable)
+   - Nesse contexto, using é usado para lidar com classes que implementam interface **IDisposable** que são objetos que necessitam ter recursos liberados após o seu uso.
+
+  ##### Sintaxe
+   - using(instancia do objeto){utilização do objeto e os seus métodos}
+   - Ao declarar dessa forma,aṕos a passagem do compilador pelo escopo do using, os recursos serão automaticamente liberados sem ser necessário a declaração explícita do fechamento.
   
     
   </details>
