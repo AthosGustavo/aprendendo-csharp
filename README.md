@@ -432,6 +432,29 @@ Console.Write(pessoa1.Nome);
   
 
     </details>
+    <details>
+      <summary>Método GET</summary>
+    
+    ## Método GET
+    ### Sintaxe do método GET
+    - GetAsync();
+
+    ```C#
+    HttpClient httpClient = new HttpClient();
+    string endeApi = endereço url da api
+    HttpResponseMessage response = awai httpClient.GetAsync(endeApi);
+    ``` 
+      
+    </details>
+    <details>
+      <summary>Método POST</summary>
+    </details>
+    <details>
+      <summary>Método PUT</summary>
+    </details>
+    <details>
+      <summary>Método DELETE</summary>
+    </details>
   </details>
 </details>
       
