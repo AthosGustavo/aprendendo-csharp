@@ -342,7 +342,93 @@ Console.Write(pessoa1.Nome);
   ```
   ### Propriedades mais importantes da classe
 
+  <details>
+    <summary>Content</summary>
+    
+  ## content
+   - Propriedade usada para acessar o conteúdo da resposta HTTP
+   - Essa propriedade é do tipo HttpContent que fornece métodos para ler o conteúdo da resposta
+  ```C#
+  HttpClient httpClient = new HttpClient()                           
+  string apiUrl = "https://api.example.com/data";                    // URL da requisiç~cao
+  HttpResponseMessage response = httpClient.GetAsync(apiUrl).Result; // Classe utilizada para receber e manipular uma response por meio de métodos e propriedades 
   
+  HttpContent content = response.Content;                          // A propriedade Content contém o conteúdo da resposta.
+  ```
+   ### Método ReadAsStringAsync()
+    - Usado para ler o conteúdo como uma string,utilizado para conteúdo JSON
+    ```C#
+    string contentString = await content.ReadAsStringAsync();
+    ```
+
+  </details>
+  <details>
+    <summary>StatusCode</summary>
+
+    ## StatusCode
+    - Propriedade usada para retornar o código de status da resposta HTTP
+    - A variável que contém o retorno é do tipo HttpStatusCode
+    ```C#
+    using System.Net.Http;
+
+    // Crie uma instância de HttpClient
+    using (HttpClient httpClient = new HttpClient())
+    {
+      string apiUrl = "https://api.example.com/data";
+      HttpResponseMessage response = httpClient.GetAsync(apiUrl).Result;
+    }
+
+    ```
+    ```C#
+    // A propriedade StatusCode contém o código de status da resposta.
+    HttpStatusCode status = response.StatusCode;
+
+    if (status == HttpStatusCode.OK)
+    {
+        Console.WriteLine("A solicitação foi bem-sucedida (código 200 - OK).");
+    }
+    else if (status == HttpStatusCode.NotFound)
+    {
+      Console.WriteLine("A solicitação não encontrou o recurso (código 404 - Not Found).");
+    }
+    // Outros casos de verificação de códigos de status podem ser adicionados conforme necessário.
+
+    ```
+    </details>
+    <details>
+      <summary>IsSuccessStatusCode</summary>
+
+    ## IsSuccessStatusCode
+    - Verifica se o código de status da requisição foi bem sucedido
+    - Devolve um boleano
+
+    ```C#
+    using System;
+    using System.Net.Http;
+
+    // Crie uma instância de HttpClient
+    using (HttpClient httpClient = new HttpClient())
+    {
+      string apiUrl = "https://api.example.com/data";
+      HttpResponseMessage response = httpClient.GetAsync(apiUrl).Result;
+
+      // Use o método IsSuccessStatusCode para verificar se a solicitação foi bem-sucedida.
+      if (response.IsSuccessStatusCode)
+      {
+          // A solicitação foi bem-sucedida, continue o processamento da resposta.
+          string content = response.Content.ReadAsStringAsync().Result;
+          Console.WriteLine("Conteúdo da resposta: " + content);
+      }
+      else
+      {
+          // A solicitação não foi bem-sucedida, lide com o erro de acordo.
+          Console.WriteLine("A solicitação falhou com o código de status: " + (int)response.StatusCode);
+      }
+    }
+
+    ```
+
+    </details>
   
 
     </details>
