@@ -458,7 +458,42 @@ Console.Write(pessoa1.Nome);
   </details>
 </details>
       
+<details>
+  <summary>Newtonsoft.json</summary>
+
+  ## Newtonsoft.json
+  - É uma biblioteca de serialização e desserialização de JSON que oferece uma maneira fácil de converter objetos C# em JSON e vice-versa.
+
+  ### Serialização
+  - Consiste em transformar um objeto ou string para o formato JSON
+  - A serialização é usada para enviar dados por uma rede
+
+  ### Desserialização
+  - Consiste em transformar o objeto JSON em uma string ou objeto que pode ser lido pelo compilador.
+
+  <details>
+    <summary>Classe JsonConvert</summary>
+
+  ## JsonConvert
+  - Classe estática que fornece métodos para realizar operações relacionadas ao JSON
+
+  ### SerializeObject
+  - Recebe um objeto e devolve uma string JSON
+  ```C#
+  Person person = new Person { Name = "John", Age = 30 };
+  string json = JsonConvert.SerializeObject(person);
+  ```
+  ### DeserializeObject
+  - Recebe uma string JSON e devolve um objeto
+  ```C#
+  string json = @"{'Name':'Jane','Age':25}";
+  Person person = JsonConvert.DeserializeObject<Person>(json);
+  ```
     
+  </details>
+
+  
+</details>
 
 
 
