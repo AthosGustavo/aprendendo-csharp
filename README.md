@@ -491,6 +491,26 @@ Console.Write(pessoa1.Nome);
   ```
     
   </details>
+  <details>
+    <summary>Classe JArray</summary>
+
+  ## JArray
+  - Essa classe serve para representar arrays em formato JSON.
+
+  ### Serialização
+  - Convertendo um array para JSON
+  ```C#
+  string json = nomeArray.ToString();
+  ```
+  ### Desserialização
+  - Convertendo uma string JSON para um Array usando o método JArray.Parse
+  ```C#
+  string json = "[1, 2, 3, 4, 5]";
+  JArray jsonArray = JArray.Parse(json);
+  ```
+    
+    
+  </details>
 
   
 </details>
