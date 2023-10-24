@@ -476,17 +476,6 @@ Console.Write(pessoa1.Nome);
 
   ### Desserialização
   - Consiste em transformar o objeto JSON em uma string ou objeto que pode ser lido pelo compilador.
-
-  <details>
-    <summary>JToken</summary>
-  
-  ## JToken
-  -  Ela é a classe base para muitos tipos de objetos que representam elementos em estruturas JSON, como objetos, matrizes, valores simples (números, strings, booleanos) e nulos.
-  -  A classe JToken define várias propriedades e métodos comuns que são compartilhados por suas classes derivadas, incluindo JObject, JArray, JValue, JProperty
-  -  Então muitas variaveis que recebem valores dessas classes podem ser do tipo JToken
-    
-  </details>
-  
   
   <details>
     <summary>Classe JsonConvert</summary>
@@ -508,11 +497,22 @@ Console.Write(pessoa1.Nome);
   ```
     
   </details>
-  <details>
-    <summary>Classe JArray</summary>
+  
+</details>
+
+<details>
+  <summary>biblioteca JSON.NET</summary>
+    <details>
+      <summary>Classe JArray</summary>
 
   ## JArray
   - Essa classe serve para representar arrays em formato JSON.
+  - A classe JObject possui as mesmas características de JArray
+  - Ambas as classes, JObject e JArray, herdam de JToken, o que significa que podem ser usadas de maneira genérica quando você não sabe se está trabalhando com um objeto JSON ou uma matriz JSON.
+  
+  **Importante :** 
+  
+  *A classe não é responsável pela desserialização completa de um JSON em um objeto C#. O JArray é útil quando você precisa interagir com dados em formato JSON sem convertê-los em objetos C#.*
 
   ### Serialização
   - Convertendo um array para JSON
@@ -528,9 +528,18 @@ Console.Write(pessoa1.Nome);
     
     
   </details>
-
   
+  <details>
+    <summary>JToken</summary>
+  
+  ## JToken
+  -  Ela é a classe base para muitos tipos de objetos que representam elementos em estruturas JSON, como objetos, matrizes, valores simples (números, strings, booleanos) e nulos.
+  -  A classe JToken define várias propriedades e métodos comuns que são compartilhados por suas classes derivadas, incluindo JObject, JArray, JValue, JProperty
+  -  Então muitas variaveis que recebem valores dessas classes podem ser do tipo JToken
+    
+  </details>
 </details>
+
 
 
 
