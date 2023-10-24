@@ -472,6 +472,17 @@ Console.Write(pessoa1.Nome);
   - Consiste em transformar o objeto JSON em uma string ou objeto que pode ser lido pelo compilador.
 
   <details>
+    <summary>JToken</summary>
+  
+  ## JToken
+  -  Ela é a classe base para muitos tipos de objetos que representam elementos em estruturas JSON, como objetos, matrizes, valores simples (números, strings, booleanos) e nulos.
+  -  A classe JToken define várias propriedades e métodos comuns que são compartilhados por suas classes derivadas, incluindo JObject, JArray, JValue, JProperty
+  -  Então muitas variaveis que recebem valores dessas classes podem ser do tipo JToken
+    
+  </details>
+  
+  
+  <details>
     <summary>Classe JsonConvert</summary>
 
   ## JsonConvert
