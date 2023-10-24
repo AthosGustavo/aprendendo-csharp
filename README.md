@@ -299,6 +299,7 @@ Console.Write(pessoa1.Nome);
     ## Classe HttpResponseMessage
 
     - Classe utilizada para manipular e tratar respostas de requisições
+    - Essa classe terá o primeiro contato com a resposta da requisição ainda no formato JSON e para ler a resposta é necessário primeiro converter a response para uma string e após isso transformar para um array ou objeto através do pacote Newtonsoft.
 
     ### Métodos importantes da classe
 
@@ -306,6 +307,9 @@ Console.Write(pessoa1.Nome);
 
     - Usado para verificar se uma resposta HTTP foi bem sucedida
     - Caso a requisicao não for bem sucedida, uma execeção sem tratamento será lançada, caso o erro não ocorra, a execução continua e o método não retorna nada.
+    ```C#
+    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+    ```
 
   ```C#
   using System;
