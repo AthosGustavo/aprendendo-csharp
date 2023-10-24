@@ -254,8 +254,8 @@ foreach(tipo variavel in nomeArray){}
 ```C#
 private string nome;
 public string Nome{
-  get{return nome}
-  set{nome = value}
+  get{return nome;}
+  set{nome = value;}
 }
 ```
 *Atribuindo valor (SET)*
