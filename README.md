@@ -579,17 +579,23 @@ Console.Write(pessoa1.Nome);
    - Tradução HasKey: "Tem chave"
    - Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
   
-  HasOne(x --> x.y)
-  lê-se: a entidade x possui uma referência para a entidade y
-  Tradução HasOne: "Tem um"
+  ```c#
+  c#HasOne(x --> x.y)
+  ```
+   - Lê-se: a entidade x possui uma referência para a entidade y
+   - Tradução HasOne: "Tem um"
 
-  WithMany(x --> x.y)
-  lê-se: A entidade x  pode estar relacionada a muitos objetos y
-  Tradução WithMany: "Com muitos"
+  ```
+  c#WithMany(x --> x.y)
+  ```
+   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
+   - Tradução WithMany: "Com muitos"
   
+  ```c#
   HasForeignKey(x --> x.y)
-  lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
-  Tradução HasForeignKey: "Tem chave estrangeira"
+  ```
+   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
+   - Tradução HasForeignKey: "Tem chave estrangeira"
 
   ```c#
   public class Usuario
