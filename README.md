@@ -568,11 +568,10 @@ Console.Write(pessoa1.Nome);
    - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
    - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
 
-  OnModelCreating
-
-  #### modelBuilder
-   - Método que faz parte do Entity Framework e é usado para configurar o mapeamento de entidades.
-   - Usado para definir o relacionamento entre as entidades.
+  #### Método OnModelCreating
+   - Usado para configurar o modelo de dados do aplicativo.
+   - Permite definir como as entidades são mapeadas para tabelas no banco de dados.
+   - ```Argumento modelBuilder``` usado para definir o modelo de dados e o mapeamento das entidades,bem como as suas chaves e relacionamento
 
   #### modelBuilder.Entity
    -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
