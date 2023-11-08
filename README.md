@@ -577,6 +577,9 @@ Console.Write(pessoa1.Nome);
    -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
    -  Dentro do generics é passada a classe que você deseja configurar e mapear para o modelo relacional.
   
+<details>
+  <summary>Relacionamento Muitos para Muitos</summary>
+  
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
   ```
@@ -601,9 +604,6 @@ Console.Write(pessoa1.Nome);
   ```
    - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
    - Tradução HasForeignKey: "Tem chave estrangeira"
-
-<details>
-  <summary>Relacionamento Muitos para Muitos</summary>
 
   ```c#
   public class Usuario
@@ -653,6 +653,28 @@ Console.Write(pessoa1.Nome);
   }
 
   ```
+</details>
+<details>
+  <summary>Relacionamento Um para Muitos</summary>
+
+  ```c#
+  HasMany(x --> x.y)
+  ```
+   - Lê-se: a entidade x possui uma referência para a entidade y
+   - Tradução HasOne: "Tem muitos"
+
+  ```c#
+  WithOne(x --> x.y)
+  ```
+   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
+   - Tradução WithOne: "Com um"
+  
+  ```c#
+  HasForeignKey(x --> x.y)
+  ```
+   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
+   - Tradução HasForeignKey: "Tem chave estrangeira"
+  
 </details>
   ### Anotações
 
