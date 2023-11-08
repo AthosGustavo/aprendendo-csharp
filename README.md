@@ -588,13 +588,13 @@ Console.Write(pessoa1.Nome);
    - Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
   
   ```c#
-  c#HasOne(x --> x.y)
+    HasOne(x --> x.y)
   ```
    - Lê-se: a entidade x possui uma referência para a entidade y
    - Tradução HasOne: "Tem um"
 
-  ```
-  c#WithMany(x --> x.y)
+  ```c#
+    WithMany(x --> x.y)
   ```
    - lê-se: A entidade x  pode estar relacionada a muitos objetos y
    - Tradução WithMany: "Com muitos"
