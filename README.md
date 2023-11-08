@@ -540,6 +540,34 @@ Console.Write(pessoa1.Nome);
   </details>
 </details>
 
+<details>
+  <summary>API .NET</summary>
+
+<details>
+  <summary>Pastas e arquitetura do projeto</summary>
+  
+ ## Pastas e arquitetura do projeto.
+
+ **Models**
+  - Aqui as classes são definidas.
+ 
+ **Controllers**
+  - Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.
+ 
+ **Services**
+  - Contém classes que fornecem lógica de negócios e serviçoes para os controladores.Essa classe ajuda  a manter o código do controlador enxuto,movendo a lógica complexa para classes de serviço.
+
+</details>
+  
+
+
+
+
+
+
+  
+</details>
+
 
 
 
