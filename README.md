@@ -588,10 +588,36 @@ Console.Write(pessoa1.Nome);
    *Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.*
  
    ### ControllerBase
-   ### Route
-   ### ApiController
-   ### HttpGet
+   -  fornece funcionalidades comuns e recursos que os controllers usam para atender às solicitações HTTP e enviar respostas aos clientes
    
+   ### Route
+   - Define o endpoint de um classe controlador
+   
+   ### ApiController
+   - indica que esta classe é um Controller de API.
+   
+   ### HttpGet
+   - Define qual será o verbo HTTP que um método irá responder após uma requisição para o endpoint da classe
+
+   ```c#
+  using Microsoft.AspNetCore.Mvc;
+
+  [Route("api/[controller]")]
+  [ApiController]
+  public class MeuController : ControllerBase
+  {
+      // GET api/meu
+      [HttpGet]
+      public IActionResult Get()
+      {
+        // Lógica para buscar dados e retornar uma resposta HTTP
+        var dados = new { Nome = "Exemplo", Descricao = "Isso é um exemplo." };
+        return Ok(dados);
+      }
+   }
+
+   ```
+
 
 
    
