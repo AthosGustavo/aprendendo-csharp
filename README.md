@@ -558,7 +558,45 @@ Console.Write(pessoa1.Nome);
   - Contém classes que fornecem lógica de negócios e serviçoes para os controladores.Essa classe ajuda  a manter o código do controlador enxuto,movendo a lógica complexa para classes de serviço.
 
 </details>
+
+<details>
+  <summary>Entity Framework ORM</summary>
   
+  ## Entity Framework ORM
+
+  ### Anotações
+
+  **Table**
+   - permite definir o nome da tabela no banco de dados.
+  ```java
+  [Table("Produtos")]
+  public class Produto
+  {
+    // Propriedades da entidade Produto
+  }
+  ```
+
+  **Key**
+   - Indica que uma propriedade é a chave primária da entidade.
+  ```java
+  [Key]
+  public int ClienteId { get; set; }
+  ```
+
+  **Required**
+   - Indica que o preenchimento de uma propriedade é obrigatória.
+  ```java
+  [Required]
+  public string Nome { get; set; }
+  ```
+
+  
+
+
+  
+
+  
+</details>
 
 
 
