@@ -584,7 +584,55 @@ Console.Write(pessoa1.Nome);
   HasForeignKey(x --> x.y)
   lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
   Tradução HasForeignKey: "Tem chave estrangeira"
-  
+
+  ```c#
+  public class Usuario
+  {
+    public int UsuarioId { get; set; }
+    public string Nome { get; set; }
+    public ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
+  }
+
+  public class Grupo
+  {
+    public int GrupoId { get; set; }
+    public string Nome { get; set; }
+    public ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
+  }
+
+  public class UsuarioGrupo
+  {
+    public int UsuarioId { get; set; }
+    public Usuario Usuario { get; set; }
+    public int GrupoId { get; set; }
+    public Grupo Grupo { get; set; }
+  }
+  ```
+  ```c#
+  public class MeuDbContext : DbContext
+  {
+    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Grupo> Grupos { get; set; }
+    public DbSet<UsuarioGrupo> UsuarioGrupos { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<UsuarioGrupo>()
+            .HasKey(ug => new { ug.UsuarioId, ug.GrupoId });
+
+        modelBuilder.Entity<UsuarioGrupo>()
+            .HasOne(ug => ug.Usuario)
+            .WithMany(u => u.UsuarioGrupos)
+            .HasForeignKey(ug => ug.UsuarioId);
+
+        modelBuilder.Entity<UsuarioGrupo>()
+            .HasOne(ug => ug.Grupo)
+            .WithMany(g => g.UsuarioGrupos)
+            .HasForeignKey(ug => ug.GrupoId);
+    }
+  }
+
+  ```
 
   ### Anotações
 
