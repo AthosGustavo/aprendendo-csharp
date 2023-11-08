@@ -548,8 +548,39 @@ Console.Write(pessoa1.Nome);
   
  ## Pastas e arquitetura do projeto.
 
- **Models**
-  - Aqui as classes são definidas.
+ <details>
+   <summary>Models</summary>
+   
+   ### Models
+   Aqui as classes são definidas.
+   
+   **Anotações**
+   
+   **Table**
+   - permite definir o nome da tabela no banco de dados.
+  ```java
+  [Table("Produtos")]
+  public class Produto
+  {
+    // Propriedades da entidade Produto
+  }
+  ```
+
+  **Key**
+   - Indica que uma propriedade é a chave primária da entidade.
+  ```java
+  [Key]
+  public int ClienteId { get; set; }
+  ```
+
+  **Required**
+   - Indica que o preenchimento de uma propriedade é obrigatória.
+  ```java
+  [Required]
+  public string Nome { get; set; }
+  ``` 
+   
+ </details>
  
  **Controllers**
   - Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.
@@ -734,6 +765,7 @@ Console.Write(pessoa1.Nome);
   ```
   
 </details>
+  
   ### Anotações
 
   **Table**
