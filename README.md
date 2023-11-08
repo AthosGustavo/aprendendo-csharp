@@ -552,7 +552,7 @@ Console.Write(pessoa1.Nome);
    <summary>Models</summary>
    
    ### Models
-   Aqui as classes são definidas.
+   *Aqui as classes são definidas.*
    
    **Anotações**
    
@@ -581,10 +581,21 @@ Console.Write(pessoa1.Nome);
   ``` 
    
  </details>
+ <details>
+   <summary>Controller</summary>
+   
+   ## Controllers
+   *Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.*
  
- **Controllers**
-  - Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.
- 
+   ### ControllerBase
+   ### Route
+   ### ApiController
+   ### HttpGet
+   
+
+
+   
+ </details>
  **Services**
   - Contém classes que fornecem lógica de negócios e serviçoes para os controladores.Essa classe ajuda  a manter o código do controlador enxuto,movendo a lógica complexa para classes de serviço.
 
