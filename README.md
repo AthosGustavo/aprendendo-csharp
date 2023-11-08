@@ -573,8 +573,9 @@ Console.Write(pessoa1.Nome);
    - Permite definir como as entidades são mapeadas para tabelas no banco de dados.
    - ```Argumento modelBuilder``` usado para definir o modelo de dados e o mapeamento das entidades,bem como as suas chaves e relacionamento
 
-  #### modelBuilder.Entity
+  #### modelBuilder.Entity<ClasseModelo>
    -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
+   -  Dentro do generics é passada a classe que você deseja configurar e mapear para o modelo relacional.
   
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
@@ -600,6 +601,9 @@ Console.Write(pessoa1.Nome);
   ```
    - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
    - Tradução HasForeignKey: "Tem chave estrangeira"
+
+<details>
+  <summary>Relacionamento Muitos para Muitos</summary>
 
   ```c#
   public class Usuario
@@ -649,7 +653,7 @@ Console.Write(pessoa1.Nome);
   }
 
   ```
-
+</details>
   ### Anotações
 
   **Table**
