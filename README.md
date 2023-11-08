@@ -676,6 +676,64 @@ Console.Write(pessoa1.Nome);
    - Tradução HasForeignKey: "Tem chave estrangeira"
   
 </details>
+<details>
+  <summary>Relacionamento Um para Um</summary>
+
+   ```c#
+  HasOne(x --> x.y)
+  ```
+   - Lê-se: a entidade x possui uma referência para a entidade y
+   - Tradução HasOne: "Tem muitos"
+
+  ```c#
+  WithOne(x --> x.y)
+  ```
+   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
+   - Tradução WithOne: "Com um"
+  
+  ```c#
+  HasForeignKey(x --> x.y)
+  ```
+   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
+   - Tradução HasForeignKey: "Tem chave estrangeira"
+  
+  ```c#
+  public class Pessoa
+  {
+    public int PessoaId { get; set; }
+    public string Nome { get; set; }
+
+    // Propriedade de navegação para o Endereco
+    public Endereco Endereco { get; set; }
+  }
+
+  ```
+  ```c#
+  public class Endereco
+  {
+    public int EnderecoId { get; set; }
+    public string Rua { get; set; }
+    public string Cidade { get; set; }
+    
+    // Chave estrangeira para a Pessoa
+    public int PessoaId { get; set; }
+    
+    // Propriedade de navegação para a Pessoa
+    public Pessoa Pessoa { get; set; }
+  }
+
+  ```  
+  ```c#
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelBuilder.Entity<Pessoa>()
+        .HasOne(p => p.Endereco)
+        .WithOne(e => e.Pessoa)
+        .HasForeignKey<Endereco>(e => e.PessoaId);
+  }
+  ```
+  
+</details>
   ### Anotações
 
   **Table**
