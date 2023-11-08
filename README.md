@@ -647,7 +647,32 @@ Console.Write(pessoa1.Nome);
   
 <details>
   <summary>Relacionamento Muitos para Muitos</summary>
+
+  ## Relacionamento Muitos para Muitos
   
+  ### Configuração entre as classes e o banco de dados.
+
+  ```c# 
+  public DbSet<Pessoa> Pessoas { get; set; }
+  ```
+   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
+
+  ```c#
+  using Microsoft.EntityFrameworkCore;
+
+  public class ApplicationDbContext : DbContext
+  {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Pessoa> Pessoas { get; set; }
+    public DbSet<Grupo> Grupos { get; set; }
+  }
+
+  ```
+ 
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
   ```
@@ -847,7 +872,11 @@ Console.Write(pessoa1.Nome);
 
 
 
+pasta data
+  arquivos de mapeamento objeto relacional
 
+appsettings.json
+arquivo onde sera declarado as configuracoes com o banco
 
 
 
