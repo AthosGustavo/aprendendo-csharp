@@ -674,7 +674,7 @@ Console.Write(pessoa1.Nome);
   ```
    -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
 
- 
+  -------------------------------------------------------------------------------------------------------------
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
   ```
