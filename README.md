@@ -652,11 +652,7 @@ Console.Write(pessoa1.Nome);
   
   ### Configuração entre as classes e o banco de dados.
 
-  ```c# 
-  public DbSet<Pessoa> Pessoas { get; set; }
-  ```
-   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
-
+  
   ```c#
   using Microsoft.EntityFrameworkCore;
 
@@ -672,6 +668,12 @@ Console.Write(pessoa1.Nome);
   }
 
   ```
+
+  ```c# 
+  public DbSet<Pessoa> Pessoas { get; set; }
+  ```
+   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
+
  
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
