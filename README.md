@@ -568,10 +568,16 @@ Console.Write(pessoa1.Nome);
    - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
    - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
 
+  OnModelCreating
+
+  modelBuilder
+  
+  ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
-  lê-se: A entidade UsuarioGrupo terá como chave primária a combinação das propriedades UsuarioId e GrupoId.
-  Tradução HasKey: "Tem chave"
-  Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
+  ```
+   - Lê-se: A entidade UsuarioGrupo terá como chave primária a combinação das propriedades UsuarioId e GrupoId.
+   - Tradução HasKey: "Tem chave"
+   - Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
   
   HasOne(x --> x.y)
   lê-se: a entidade x possui uma referência para a entidade y
