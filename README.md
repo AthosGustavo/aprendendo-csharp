@@ -570,7 +570,12 @@ Console.Write(pessoa1.Nome);
 
   OnModelCreating
 
-  modelBuilder
+  #### modelBuilder
+   - Método que faz parte do Entity Framework e é usado para configurar o mapeamento de entidades.
+   - Usado para definir o relacionamento entre as entidades.
+
+  #### modelBuilder.Entity
+   -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
   
   ```c# 
   HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
