@@ -566,6 +566,12 @@ Console.Write(pessoa1.Nome);
   }
   ```
 
+  **Auto incremente**
+  - Declara o atributo como uma coluna auto-incrementável no banco de dados.
+ ```c#
+ [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+ ```
+
   **Key**
    - Indica que uma propriedade é a chave primária da entidade.
   ```java
