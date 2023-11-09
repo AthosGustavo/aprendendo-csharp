@@ -868,6 +868,12 @@ Console.Write(pessoa1.Nome);
   ```
 
   ### Conectando o banco
+
+  **Dependências do MySQL**
+  ```
+  dotnet add package Pomelo.EntityFrameworkCore.MySql
+  dotnet add package MySql.Data.EntityFrameworkCore
+  ```
   
   ```c#
   using FilmesApi.Data;
