@@ -821,8 +821,11 @@ Console.Write(pessoa1.Nome);
   ### Contexto: Configuração entre as classes e o banco de dados
 
   **Dependências a serem instaladas**
-  - Microsoft.EntityFrameworkCore
-  - Microsoft.EntityFrameworkCore.Tools
+  
+  ```
+  dotnet add package Microsoft.EntityFrameworkCore
+  dotnet add package Microsoft.EntityFrameworkCore.Tools
+  ```
 
   **Criação da pasta Data**
   - Dentro dessa pasta serão guardados os arquivos que irão fazer o contexto entre as classes e o banco de dados
