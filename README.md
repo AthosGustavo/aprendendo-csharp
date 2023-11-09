@@ -875,6 +875,7 @@ Console.Write(pessoa1.Nome);
   dotnet add package MySql.Data.EntityFrameworkCore
   ```
   
+  **Arquivo Program.cs**
   ```c#
   using FilmesApi.Data;
   using Microsoft.EntityFrameworkCore;
