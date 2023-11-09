@@ -853,9 +853,23 @@ Console.Write(pessoa1.Nome);
     },
     "AllowedHosts": "*",
     "ConnectionStrings": {
-      "FilmeConnection": "server=localhost;database=filme;user=root;password=root"
+      "ApplicationDbConnection": "server=localhost;database=filme;user=root;password=root"
     }
   }
+  ```
+
+  ### Conectando o banco
+  
+  ```c#
+  using FilmesApi.Data;
+  using Microsoft.EntityFrameworkCore;
+
+  var builder = WebApplication.CreateBuilder(args);
+
+  var connectionString = builder.Configuration.GetConnectionString("ApplicationDbConnection");
+
+  builder.Services.AddDbContext<FilmeContext>(opts =>
+    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
   ```
   
 </details>
