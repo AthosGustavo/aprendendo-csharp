@@ -650,29 +650,7 @@ Console.Write(pessoa1.Nome);
 
   ## Relacionamento Muitos para Muitos
   
-  ### Configuração entre as classes e o banco de dados.
-
   
-  ```c#
-  using Microsoft.EntityFrameworkCore;
-
-  public class ApplicationDbContext : DbContext
-  {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
-
-    public DbSet<Pessoa> Pessoas { get; set; }
-    public DbSet<Grupo> Grupos { get; set; }
-  }
-
-  ```
-
-  ```c# 
-  public DbSet<Pessoa> Pessoas { get; set; }
-  ```
-   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
 
   -------------------------------------------------------------------------------------------------------------
   ```c# 
@@ -825,6 +803,58 @@ Console.Write(pessoa1.Nome);
         .HasOne(p => p.Endereco)
         .WithOne(e => e.Pessoa)
         .HasForeignKey<Endereco>(e => e.PessoaId);
+  }
+  ```
+  
+</details>
+<details>
+  <summary>Conexão com o banco de dados</summary>
+
+  ## Conexão com o banco de dados
+  
+  ### Contexto: Configuração entre as classes e o banco de dados
+
+  **Dependências a serem instaladas**
+  - Microsoft.EntityFrameworkCore
+  - Microsoft.EntityFrameworkCore.Tools
+
+  **Criação da pasta Data**
+  - Dentro dessa pasta serão guardados os arquivos que irão fazer o contexto entre as classes e o banco de dados
+
+  ```c#
+  using Microsoft.EntityFrameworkCore;
+
+  public class ApplicationDbContext : DbContext
+  {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Pessoa> Pessoas { get; set; }
+    public DbSet<Grupo> Grupos { get; set; }
+  }
+
+  ```
+
+  ```c# 
+  public DbSet<Pessoa> Pessoas { get; set; }
+  ```
+   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
+
+  ### Configurando o banco de dados
+  ```
+  {
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+      "FilmeConnection": "server=localhost;database=filme;user=root;password=root"
+    }
   }
   ```
   
