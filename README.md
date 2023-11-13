@@ -1097,18 +1097,16 @@ public class FilmeContext : DbContext
 ```
   
 </details>
+<details>
+  <summary>Relacionamento N:N</summary>
 
+  ## Relacionamento entre Filme e Cinema
+   - Um filme pode estar associado a vários cinemas.
+   - Um cinema pode estar associado a vários filmes.
 
-</details>
-
-
-Relacionamento N:N
-
-Relacionamento entre Filme e Cinema
-
-Um filme pode estar associado a vários cinemas.
-Um cinema pode estar associado a vários filmes.
-
+  ### Criando as classes.
+   - o id do cinema foi removido
+  
 ```c#
 {
   public class Sessao
@@ -1121,6 +1119,8 @@ Um cinema pode estar associado a vários filmes.
   }
 }
 ```
+
+### Contexto entre as classes e o banco de dados
 ```c#
 protected override void OnModelCreating(ModelBuilder builder)
 {
@@ -1138,6 +1138,12 @@ protected override void OnModelCreating(ModelBuilder builder)
     .HasForeignKey(sessao => sessao.FilmeId);
 }
 ```
+</details>
+
+
+</details>
+
+
 
 
 
