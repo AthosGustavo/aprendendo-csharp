@@ -947,10 +947,6 @@ arquivo onde sera declarado as configuracoes com o banco
   <summary>Relacionamento</summary>
 
   ## Relacionamento
-  
-  ### Relacionamento utilizando public virtual ou OnModelCreating
-   - No caso de relacionamentos do tipo 1:1 e 1:N, o public virtual pode ser usado tranquilamente ou até mesmo omitido,pois o Entity Framework irá entender o relacionamento.
-   - O método OnModelCreating é indicado para relacionamento do tipo N:N,pois exigem configurações específicas como chave primária,estrangeira e etc.
 
   ### Passo a passo de um relacionamento
    - Criacão da classe.
@@ -960,6 +956,19 @@ arquivo onde sera declarado as configuracoes com o banco
   #### Classe DbContext
    - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
    - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
+
+  #### Relacionamento utilizando public virtual ou OnModelCreating
+   - No caso de relacionamentos do tipo 1:1 e 1:N, o public virtual pode ser usado tranquilamente ou até mesmo omitido,pois o Entity Framework irá entender o relacionamento.
+   - O método OnModelCreating é indicado para relacionamento do tipo N:N,pois exigem configurações específicas como chave primária,estrangeira e etc.
+  
+  #### Método OnModelCreating
+   - Usado para configurar o modelo de dados do aplicativo.
+   - Permite definir como as entidades são mapeadas para tabelas no banco de dados.
+   - ```Argumento modelBuilder``` usado para definir o modelo de dados e o mapeamento das entidades,bem como as suas chaves e relacionamento
+
+  #### modelBuilder.Entity<ClasseModelo>
+   -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
+   -  Dentro do generics é passada a classe que você deseja configurar e mapear para o modelo relacional.
 
 <details>
   <summary>Relacionamento 1:1</summary>
@@ -1014,24 +1023,16 @@ public class FilmeContext : DbContext
 ```
   
 </details>
+<details>
+  <summary>Relacionamento 1:N</summary>
+  
+  ## Relacionamento entre Sessão e Filme
 
+ - Para uma seção existir, é necessário que ela esteja associada a um filme.
+ - Uma secão deve estar associada no máximo a um único filme.
+ - Um filme pode ter várias seções.
 
-</details>
-1-criacao das classes
-2-adicionar a classe Context as propriedades que irao representar as outras classes no banco de dados
-3-relacionamento
-
-Relacionamento 1:1
-
-
-
-
-Relacionamento 1:N
-
-Para uma seção existir, é necessário que ela esteja associada a um filme.
-Uma secão deve estar associada no máximo a um único filme.
-Um filme pode ter várias seções.
-
+ ### Criação das classes
 ```c#
 using System.ComponentModel.DataAnnotations;
 
@@ -1075,6 +1076,26 @@ public class Filme
     public virtual ICollection<Sessao> Sessoes { get; set; }
 }
 ```
+### Contexto entre as classes e o banco de dados
+```c#
+public class FilmeContext : DbContext
+{
+  public FilmeContext(DbContextOptions<FilmeContext> opts) : base(opts)
+  {
+  }
+
+  public DbSet<Cinemas>Cinemas{get;set;}
+  public DbSet<Endereco>Enderecos{get;set;}
+
+}
+```
+  
+</details>
+
+
+</details>
+
+
 Relacionamento N:N
 
 Relacionamento entre Filme e Cinema
