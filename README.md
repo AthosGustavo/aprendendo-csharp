@@ -954,8 +954,14 @@ arquivo onde sera declarado as configuracoes com o banco
    - Relacionamento.
 
   #### Classe DbContext
+   - A classe ficará guardada dentro de uma pasta chamada Data
    - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
-   - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
+   - Desempenha um papel crucial na interação entre as classes da aplicação e o banco de dados.
+
+  ```c# 
+  public DbSet<nomeClasse> nomeVariavel { get; set; }
+  ```
+   -  Define uma propriedade que representa a tabela no banco de dados para a uma determinada entidade.
 
   #### Relacionamento utilizando public virtual ou OnModelCreating
    - No caso de relacionamentos do tipo 1:1 e 1:N, o public virtual pode ser usado tranquilamente ou até mesmo omitido,pois o Entity Framework irá entender o relacionamento.
