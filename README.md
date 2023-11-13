@@ -633,91 +633,6 @@ Console.Write(pessoa1.Nome);
 
 </details>
 
-
- 
-<details>
-  <summary>Conexão com o banco de dados</summary>
-
-  ## Conexão com o banco de dados
-  
-  ### Contexto: Configuração entre as classes e o banco de dados
-
-  **Dependências a serem instaladas**
-  
-  ```
-  dotnet add package Microsoft.EntityFrameworkCore
-  dotnet add package Microsoft.EntityFrameworkCore.Tools
-  ```
-
-  ### Configurando o banco de dados
-  ```
-  {
-    "Logging": {
-      "LogLevel": {
-        "Default": "Information",
-        "Microsoft.AspNetCore": "Warning"
-      }
-    },
-    "AllowedHosts": "*",
-    "ConnectionStrings": {
-      "ApplicationDbConnection": "server=localhost;database=filme;user=root;password=root"
-    }
-  }
-  ```
-
-  ### Conectando o banco
-
-  **Dependências do MySQL**
-  ```
-  dotnet add package Pomelo.EntityFrameworkCore.MySql
-  dotnet add package MySql.Data.EntityFrameworkCore
-  ```
-  
-  **Arquivo Program.cs**
-  ```c#
-  using FilmesApi.Data;
-  using Microsoft.EntityFrameworkCore;
-
-  var builder = WebApplication.CreateBuilder(args);
-
-  var connectionString = builder.Configuration.GetConnectionString("ApplicationDbConnection");
-
-  builder.Services.AddDbContext<FilmeContext>(opts =>
-    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-  ```
-  
-</details>
-  
-  ### Anotações
-
-  **Table**
-   - permite definir o nome da tabela no banco de dados.
-  ```java
-  [Table("Produtos")]
-  public class Produto
-  {
-    // Propriedades da entidade Produto
-  }
-  ```
-
-  **Key**
-   - Indica que uma propriedade é a chave primária da entidade.
-  ```java
-  [Key]
-  public int ClienteId { get; set; }
-  ```
-
-  **Required**
-   - Indica que o preenchimento de uma propriedade é obrigatória.
-  ```java
-  [Required]
-  public string Nome { get; set; }
-  ```
-
-</details>
-
-</details>
-
 <details>
   <summary>Relacionamento</summary>
 
@@ -947,6 +862,91 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 
 </details>
+ 
+<details>
+  <summary>Conexão com o banco de dados</summary>
+
+  ## Conexão com o banco de dados
+  
+  ### Contexto: Configuração entre as classes e o banco de dados
+
+  **Dependências a serem instaladas**
+  
+  ```
+  dotnet add package Microsoft.EntityFrameworkCore
+  dotnet add package Microsoft.EntityFrameworkCore.Tools
+  ```
+
+  ### Configurando o banco de dados
+  ```
+  {
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+      "ApplicationDbConnection": "server=localhost;database=filme;user=root;password=root"
+    }
+  }
+  ```
+
+  ### Conectando o banco
+
+  **Dependências do MySQL**
+  ```
+  dotnet add package Pomelo.EntityFrameworkCore.MySql
+  dotnet add package MySql.Data.EntityFrameworkCore
+  ```
+  
+  **Arquivo Program.cs**
+  ```c#
+  using FilmesApi.Data;
+  using Microsoft.EntityFrameworkCore;
+
+  var builder = WebApplication.CreateBuilder(args);
+
+  var connectionString = builder.Configuration.GetConnectionString("ApplicationDbConnection");
+
+  builder.Services.AddDbContext<FilmeContext>(opts =>
+    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+  ```
+  
+</details>
+  
+  ### Anotações
+
+  **Table**
+   - permite definir o nome da tabela no banco de dados.
+  ```java
+  [Table("Produtos")]
+  public class Produto
+  {
+    // Propriedades da entidade Produto
+  }
+  ```
+
+  **Key**
+   - Indica que uma propriedade é a chave primária da entidade.
+  ```java
+  [Key]
+  public int ClienteId { get; set; }
+  ```
+
+  **Required**
+   - Indica que o preenchimento de uma propriedade é obrigatória.
+  ```java
+  [Required]
+  public string Nome { get; set; }
+  ```
+
+</details>
+
+</details>
+
+
 
 
 
