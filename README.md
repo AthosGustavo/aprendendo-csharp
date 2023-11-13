@@ -952,6 +952,7 @@ Relacionamento 1:1
 
 Um cinema deve conter obrigatoriamente um endereço.
 Um endereço não precisa ter um cinema para existir.
+Um cinema deve possuir no máximo um único endereço.
 Na tebela cinema, deve existir uma coluna para fazer refência a um cinema.
 A maneira de indicar que essas duas tabelas possuem um relacionamento é adicionando o atributo public virtual.
 
@@ -979,6 +980,57 @@ public class Cinema
         public virtual Cinema Cinema { get; set; }
     }
 ```
+
+Relacionamento 1:N
+
+Para uma seção existir, é necessário que ela esteja associada a um filme.
+Uma secão deve estar associada no máximo a um único filme.
+Um filme pode ter várias seções.
+
+```c#
+using System.ComponentModel.DataAnnotations;
+
+namespace FilmesApi.Models
+{
+    public class Sessao
+    {
+        [Key]
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public int FilmeId { get; set; }
+
+        public virtual Filme Filme { get; set; }
+    }
+}
+```
+```c#
+using System.ComponentModel.DataAnnotations;
+
+namespace FilmesApi.Models;
+
+public class Filme
+{
+    [Key]
+    [Required]
+    public int Id { get; set; }
+
+    [Required(ErrorMessage = "O título do filme é obrigatório")]
+    public string Titulo { get; set; }
+
+    [Required(ErrorMessage = "O gênero do filme é obrigatório")]
+    [MaxLength(50, ErrorMessage = "O tamanho do gênero não pode exceder 50 caracteres")]
+    public string Genero { get; set; }
+
+    [Required]
+    [Range(70, 600, ErrorMessage = "A duração deve ter entre 70 e 600 minutos")]
+    public int Duracao { get; set; }
+
+    public virtual ICollection<Sessao> Sessoes { get; set; }
+}
+```
+
 
 
 
