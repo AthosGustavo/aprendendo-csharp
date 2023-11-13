@@ -943,19 +943,36 @@ arquivo onde sera declarado as configuracoes com o banco
 
 
 
+<details>
+  <summary>Relacionamento</summary>
 
-1-criacao das classes
-2-adicionar a classe Context as propriedades que irao representar as outras classes no banco de dados
-3-relacionamento
+  ## Relacionamento
+  
+  ### Relacionamento utilizando public virtual ou OnModelCreating
+   - No caso de relacionamentos do tipo 1:1 e 1:N, o public virtual pode ser usado tranquilamente ou até mesmo omitido,pois o Entity Framework irá entender o relacionamento.
+   - O método OnModelCreating é indicado para relacionamento do tipo N:N,pois exigem configurações específicas como chave primária,estrangeira e etc.
 
-Relacionamento 1:1
+  ### Passo a passo de um relacionamento
+   - Criacão da classe.
+   - Adicionar na classe Context as propriedades que irão representar as classes no banco de dados.
+   - Relacionamento.
 
-Um cinema deve conter obrigatoriamente um endereço.
-Um endereço não precisa ter um cinema para existir.
-Um cinema deve possuir no máximo um único endereço.
-Na tebela cinema, deve existir uma coluna para fazer refência a um cinema.
-A maneira de indicar que essas duas tabelas possuem um relacionamento é adicionando o atributo public virtual.
+  #### Classe DbContext
+   - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
+   - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
 
+<details>
+  <summary>Relacionamento 1:1</summary>
+
+  ## Relacionamento entre Cinema e Endereco
+
+ - Um cinema deve conter obrigatoriamente um endereço.
+ - Um endereço não precisa ter um cinema para existir.
+ - Um cinema deve possuir no máximo um único endereço.
+ - Na tebela cinema, deve existir uma coluna para fazer refência a um cinema.
+ - A maneira de indicar que essas duas tabelas possuem um relacionamento é adicionando o atributo public virtual.
+
+  ### Criação das classes
 ```c#
 public class Cinema
     {
@@ -980,6 +997,34 @@ public class Cinema
         public virtual Cinema Cinema { get; set; }
     }
 ```
+
+### Contexto entre as classes e o banco de dados.
+
+```c#
+public class FilmeContext : DbContext
+{
+  public FilmeContext(DbContextOptions<FilmeContext> opts) : base(opts)
+  {
+  }
+
+  public DbSet<Cinemas>Cinemas{get;set;}
+  public DbSet<Endereco>Enderecos{get;set;}
+
+}
+```
+  
+</details>
+
+
+</details>
+1-criacao das classes
+2-adicionar a classe Context as propriedades que irao representar as outras classes no banco de dados
+3-relacionamento
+
+Relacionamento 1:1
+
+
+
 
 Relacionamento 1:N
 
@@ -1030,8 +1075,42 @@ public class Filme
     public virtual ICollection<Sessao> Sessoes { get; set; }
 }
 ```
+Relacionamento N:N
 
+Relacionamento entre Filme e Cinema
 
+Um filme pode estar associado a vários cinemas.
+Um cinema pode estar associado a vários filmes.
+
+```c#
+{
+  public class Sessao
+  {
+
+    public int? FilmeId { get; set; }
+    public virtual Filme Filme { get; set; }
+    public int? CinemaId { get; set; }
+    public virtual Cinema Cinema { get; set; }
+  }
+}
+```
+```c#
+protected override void OnModelCreating(ModelBuilder builder)
+{
+  builder.Entity<Sessao>()
+    .HasKey(sessao => new { sessao.FilmeId, sessao.CinemaId });
+
+  builder.Entity<Sessao>()
+    .HasOne(sessao => sessao.Cinema)
+    .WithMany(cinema => cinema.Sessoes)
+    .HasForeignKey(sessao => sessao.CinemaId);
+
+  builder.Entity<Sessao>()
+    .HasOne(sessao => sessao.Filme)
+    .WithMany(filme => filme.Sessoes)
+    .HasForeignKey(sessao => sessao.FilmeId);
+}
+```
 
 
 
