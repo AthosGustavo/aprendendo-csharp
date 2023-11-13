@@ -944,6 +944,53 @@ arquivo onde sera declarado as configuracoes com o banco
 
 
 
+1-criacao das classes
+2-adicionar a classe Context as propriedades que irao representar as outras classes no banco de dados
+3-relacionamento
+
+Relacionamento 1:1
+
+Um cinema deve conter obrigatoriamente um endereço.
+Um endereço não precisa ter um cinema para existir.
+Na tebela cinema, deve existir uma coluna para fazer refência a um cinema.
+A maneira de indicar que essas duas tabelas possuem um relacionamento é adicionando o atributo public virtual.
+
+```c#
+public class Cinema
+    {
+        [Key]
+        [Required]
+        public int Id { get; set; }
+        [Required(ErrorMessage = "O campo de nome é obrigatório.")]
+        public string Nome { get; set; }
+        public int EnderecoId { get; set; }
+        public virtual Endereco Endereco { get; set; }
+
+    }
+```
+```c#
+ public class Endereco
+    {
+        [Key]
+        [Required]
+        public int Id { get; set; }
+        public string Logradouro { get; set; }
+        public int Numero { get; set; }
+        public virtual Cinema Cinema { get; set; }
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
