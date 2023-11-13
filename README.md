@@ -633,186 +633,8 @@ Console.Write(pessoa1.Nome);
 
 </details>
 
-<details>
-  <summary>Entity Framework ORM</summary>
-  
-  ## Entity Framework ORM
 
-  ### Classe DbContext
-   - Classe fundamental no Entity Framework (EF), que é um ORM (Object-Relational Mapping).
-   - Desempenha um papel crucial na interação entre o código da aplicação e o banco de dados.
-
-  #### Método OnModelCreating
-   - Usado para configurar o modelo de dados do aplicativo.
-   - Permite definir como as entidades são mapeadas para tabelas no banco de dados.
-   - ```Argumento modelBuilder``` usado para definir o modelo de dados e o mapeamento das entidades,bem como as suas chaves e relacionamento
-
-  #### modelBuilder.Entity<ClasseModelo>
-   -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
-   -  Dentro do generics é passada a classe que você deseja configurar e mapear para o modelo relacional.
-  
-<details>
-  <summary>Relacionamento Muitos para Muitos</summary>
-
-  ## Relacionamento Muitos para Muitos
-  
-  
-
-  -------------------------------------------------------------------------------------------------------------
-  ```c# 
-  HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
-  ```
-   - Lê-se: A entidade UsuarioGrupo terá como chave primária a combinação das propriedades UsuarioId e GrupoId.
-   - Tradução HasKey: "Tem chave"
-   - Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
-  
-  ```c#
-    HasOne(x --> x.y)
-  ```
-   - Lê-se: a entidade x possui uma referência para a entidade y
-   - Tradução HasOne: "Tem um"
-
-  ```c#
-    WithMany(x --> x.y)
-  ```
-   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
-   - Tradução WithMany: "Com muitos"
-  
-  ```c#
-  HasForeignKey(x --> x.y)
-  ```
-   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
-   - Tradução HasForeignKey: "Tem chave estrangeira"
-
-  ```c#
-  public class Usuario
-  {
-    public int UsuarioId { get; set; }
-    public string Nome { get; set; }
-    public ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
-  }
-
-  public class Grupo
-  {
-    public int GrupoId { get; set; }
-    public string Nome { get; set; }
-    public ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
-  }
-
-  public class UsuarioGrupo
-  {
-    public int UsuarioId { get; set; }
-    public Usuario Usuario { get; set; }
-    public int GrupoId { get; set; }
-    public Grupo Grupo { get; set; }
-  }
-  ```
-  ```c#
-  public class MeuDbContext : DbContext
-  {
-    public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<Grupo> Grupos { get; set; }
-    public DbSet<UsuarioGrupo> UsuarioGrupos { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<UsuarioGrupo>()
-            .HasKey(ug => new { ug.UsuarioId, ug.GrupoId });
-
-        modelBuilder.Entity<UsuarioGrupo>()
-            .HasOne(ug => ug.Usuario)
-            .WithMany(u => u.UsuarioGrupos)
-            .HasForeignKey(ug => ug.UsuarioId);
-
-        modelBuilder.Entity<UsuarioGrupo>()
-            .HasOne(ug => ug.Grupo)
-            .WithMany(g => g.UsuarioGrupos)
-            .HasForeignKey(ug => ug.GrupoId);
-    }
-  }
-
-  ```
-</details>
-<details>
-  <summary>Relacionamento Um para Muitos</summary>
-
-  ```c#
-  HasMany(x --> x.y)
-  ```
-   - Lê-se: a entidade x possui uma referência para a entidade y
-   - Tradução HasOne: "Tem muitos"
-
-  ```c#
-  WithOne(x --> x.y)
-  ```
-   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
-   - Tradução WithOne: "Com um"
-  
-  ```c#
-  HasForeignKey(x --> x.y)
-  ```
-   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
-   - Tradução HasForeignKey: "Tem chave estrangeira"
-  
-</details>
-<details>
-  <summary>Relacionamento Um para Um</summary>
-
-   ```c#
-  HasOne(x --> x.y)
-  ```
-   - Lê-se: a entidade x possui uma referência para a entidade y
-   - Tradução HasOne: "Tem muitos"
-
-  ```c#
-  WithOne(x --> x.y)
-  ```
-   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
-   - Tradução WithOne: "Com um"
-  
-  ```c#
-  HasForeignKey(x --> x.y)
-  ```
-   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
-   - Tradução HasForeignKey: "Tem chave estrangeira"
-  
-  ```c#
-  public class Pessoa
-  {
-    public int PessoaId { get; set; }
-    public string Nome { get; set; }
-
-    // Propriedade de navegação para o Endereco
-    public Endereco Endereco { get; set; }
-  }
-
-  ```
-  ```c#
-  public class Endereco
-  {
-    public int EnderecoId { get; set; }
-    public string Rua { get; set; }
-    public string Cidade { get; set; }
-    
-    // Chave estrangeira para a Pessoa
-    public int PessoaId { get; set; }
-    
-    // Propriedade de navegação para a Pessoa
-    public Pessoa Pessoa { get; set; }
-  }
-
-  ```  
-  ```c#
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-    modelBuilder.Entity<Pessoa>()
-        .HasOne(p => p.Endereco)
-        .WithOne(e => e.Pessoa)
-        .HasForeignKey<Endereco>(e => e.PessoaId);
-  }
-  ```
-  
-</details>
+ 
 <details>
   <summary>Conexão com o banco de dados</summary>
 
@@ -826,30 +648,6 @@ Console.Write(pessoa1.Nome);
   dotnet add package Microsoft.EntityFrameworkCore
   dotnet add package Microsoft.EntityFrameworkCore.Tools
   ```
-
-  **Criação da pasta Data**
-  - Dentro dessa pasta serão guardados os arquivos que irão fazer o contexto entre as classes e o banco de dados
-
-  ```c#
-  using Microsoft.EntityFrameworkCore;
-
-  public class ApplicationDbContext : DbContext
-  {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
-
-    public DbSet<Pessoa> Pessoas { get; set; }
-    public DbSet<Grupo> Grupos { get; set; }
-  }
-
-  ```
-
-  ```c# 
-  public DbSet<Pessoa> Pessoas { get; set; }
-  ```
-   -  Define uma propriedade chamada Pessoas que representa a tabela no banco de dados para a entidade Pessoa.
 
   ### Configurando o banco de dados
   ```
@@ -916,32 +714,9 @@ Console.Write(pessoa1.Nome);
   public string Nome { get; set; }
   ```
 
-  
-
-
-  
-
-  
 </details>
 
-
-
-
-
-
-  
 </details>
-
-
-
-pasta data
-  arquivos de mapeamento objeto relacional
-
-appsettings.json
-arquivo onde sera declarado as configuracoes com o banco
-
-
-
 
 <details>
   <summary>Relacionamento</summary>
@@ -975,6 +750,35 @@ arquivo onde sera declarado as configuracoes com o banco
   #### modelBuilder.Entity<ClasseModelo>
    -  Usado para obter uma instância do EntityTypeBuilder para uma determinada classe de entidade. O EntityTypeBuilder é uma classe que fornece uma API fluente para configurar o mapeamento de uma classe de entidade para uma tabela no banco de dados.
    -  Dentro do generics é passada a classe que você deseja configurar e mapear para o modelo relacional.
+
+  ##### Métodos do modelBuilder
+  
+  ```c# 
+  HasKey(ug --> new {ug.UsuarioId, ig.GrupoId});
+  ```
+   - Lê-se: A entidade UsuarioGrupo terá como chave primária a combinação das propriedades UsuarioId e GrupoId.
+   - Tradução HasKey: "Tem chave"
+   - Configura a chave primária da entidade UsuarioGrupo.Ela indica que a chave primária é uma combinação das propriedades `UsuarioId` e `GrupoId`
+  
+  ```c#
+    HasOne(x --> x.y)
+  ```
+   - Lê-se: a entidade x possui uma referência para a entidade y
+   - Tradução HasOne: "Tem um"
+
+  ```c#
+    WithMany(x --> x.y)
+  ```
+   - lê-se: A entidade x  pode estar relacionada a muitos objetos y
+   - Tradução WithMany: "Com muitos"
+  
+  ```c#
+  HasForeignKey(x --> x.y)
+  ```
+   - lê-se: A entidade x possui como chave estrangeira o atributo UsuarioId.
+   - Tradução HasForeignKey: "Tem chave estrangeira"
+
+
 
 <details>
   <summary>Relacionamento 1:1</summary>
