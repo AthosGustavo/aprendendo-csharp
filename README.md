@@ -916,32 +916,6 @@ protected override void OnModelCreating(ModelBuilder builder)
   
 </details>
   
-  ### Anotações
-
-  **Table**
-   - permite definir o nome da tabela no banco de dados.
-  ```java
-  [Table("Produtos")]
-  public class Produto
-  {
-    // Propriedades da entidade Produto
-  }
-  ```
-
-  **Key**
-   - Indica que uma propriedade é a chave primária da entidade.
-  ```java
-  [Key]
-  public int ClienteId { get; set; }
-  ```
-
-  **Required**
-   - Indica que o preenchimento de uma propriedade é obrigatória.
-  ```java
-  [Required]
-  public string Nome { get; set; }
-  ```
-
 </details>
 
 </details>
