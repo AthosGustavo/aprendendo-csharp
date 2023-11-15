@@ -956,8 +956,11 @@ protected override void OnModelCreating(ModelBuilder builder)
   ```
   
 </details>
+
 <detalis>
-  <summary>teste</summary>
+  <summary>LINQ</summary>
+
+  
 </detalis>
   
 </details>
