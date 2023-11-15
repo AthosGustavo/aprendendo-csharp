@@ -626,23 +626,40 @@ Console.Write(pessoa1.Nome);
 
    ```
    ## Método POST
-  
+
+   #### Atributo readOnly
+   - Só pode ser atribuído um valor durante sua inicialização ou dentro do construtor da classe.
+   - Após a inicialização, o valor de um atributo readonly não pode ser alterado.
+   
    #### FromBody
    - Especifica que o modelo de dados deve ser extraído do corpo da requisição.
 
-  ```c#
-  using Microsoft.AspNetCore.Mvc;
-  using System;
+   #### Método Add
+   - Usado para colocar uma entidade no estado "Added" (adicionado) no contexto, no entanto ainda não está salvo.
 
-  [Route("api/[controller]")]
-  [ApiController]
-  public class ExemploController : ControllerBase
+   #### Método SaveChanges
+   - Efetua as alterações no banco de dados com uma query de insert.
+
+  ```c#
+  public class FilmeController : ControllerBase
   {
-    
+    private readonly FilmeContext _context;
+
+    public FilmeController(FilmeContext context)
+    {
+        _context = context;
+    }
+
     [HttpPost]
-    public IActionResult Post([FromBody] ModeloDeDados modelo){
+    public IActionResult AdicionaFilme([FromBody] Filme filme)
+    {
+        _context.Filmes.Add(filme);
+        _context.SaveChanges();
+
+        return CreatedAtAction(nameof(RecuperaFilmePorId), new { id = filme.Id }, filme);
     }
   }
+
   ```
 
 
