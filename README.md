@@ -980,14 +980,41 @@ protected override void OnModelCreating(ModelBuilder builder)
   ```
 
   ### Consultas em métodos GET
-  #### Método ToListAsync();
-   - Converte os resultados de uma consulta em uma lista de objetos.
+  #### Retornando todos os registros: Método ToListAsync();
+   - Converte e retorna todos os resultados de uma consulta em uma lista de objetos.
    - O método vem da propriedade DbSet que herda o DbContext
   
   #### return Ok(livros);
-  
-    
+   - Este método pode ser usado para retornar dados junto com uma resposta HTTP de sucesso.
+   - livros é passado como o objeto de conteúdo da resposta.
 
+  #### Código para capturar o status code.
+  ```c#
+  var currentStatusCode = HttpContext.Response.StatusCode;
+  ```
+    
+  ```c#
+  [Route("api/[controller]")]
+  [ApiController]
+  public class LivroController : ControllerBase
+  {
+    private readonly BibliotecaContexto _contexto;
+
+    public LivroController(BibliotecaContexto contexto)
+    {
+        _contexto = contexto;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetLivros()
+    {
+        // Retorna todos os livros do banco de dados
+        var livros = await _contexto.Livros.ToListAsync();
+
+        return Ok(livros);
+    }
+  }
+  ```
 
 
 
