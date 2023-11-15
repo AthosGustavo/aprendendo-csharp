@@ -624,6 +624,25 @@ Console.Write(pessoa1.Nome);
 
    ```
 
+  ### FromBody
+   - Especifica que o modelo de dados deve ser extraído do corpo da requisição.
+
+  ```c#
+  using Microsoft.AspNetCore.Mvc;
+  using System;
+
+  [Route("api/[controller]")]
+  [ApiController]
+  public class ExemploController : ControllerBase
+  {
+    
+    [HttpPost]
+    public IActionResult Post([FromBody] ModeloDeDados modelo){
+    }
+  }
+  ```
+
+
 
 
    
