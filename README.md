@@ -957,11 +957,44 @@ protected override void OnModelCreating(ModelBuilder builder)
   
 </details>
 
-<detalis>
+<details>
   <summary>LINQ</summary>
+  
+  ## LINQ
+
+  *Permite realizar consultas em fontes de dados utilizando uma sintaxe semelhante a SQL diretamente no código.*
+
+   - O LINQ possui duas sintaxes de consulta: Sintaxe de Consulta e Sintaxe de Método.
+
+  #### Sintaxe de Consulta
+  ```c#
+  var consulta = from livro in biblioteca
+                  where livro.Autor == "AutorX"
+                  select livro.Titulo;
+  ```
+  #### Sintaxe de Método
+  ```c#
+  var consulta = biblioteca
+    .Where(livro => livro.Autor == "AutorX")
+    .Select(livro => livro.Titulo);
+  ```
+
+  ### Consultas em métodos GET
+  #### Método ToListAsync();
+   - Converte os resultados de uma consulta em uma lista de objetos.
+   - O método vem da propriedade DbSet que herda o DbContext
+  
+  #### return Ok(livros);
+  
+    
+
+
+
+
+
 
   
-</detalis>
+</details>
   
 </details>
 
