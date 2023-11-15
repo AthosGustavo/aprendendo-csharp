@@ -830,6 +830,7 @@ public class FilmeContext : DbContext
 
   public DbSet<Cinemas>Cinemas{get;set;}
   public DbSet<Endereco>Enderecos{get;set;}
+  public DbSet<Filme>Filmes{get;set;}
 
 }
 ```
