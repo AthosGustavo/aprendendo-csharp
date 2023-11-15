@@ -590,19 +590,21 @@ Console.Write(pessoa1.Nome);
  <details>
    <summary>Controller</summary>
    
-   ## Controllers
+   ## Método GET
+   
+   ### Controllers
    *Contém as classes que definem os controladores da API e as ações que correspondem às solicitações.*
  
-   ### ControllerBase
+   #### ControllerBase
    -  fornece funcionalidades comuns e recursos que os controllers usam para atender às solicitações HTTP e enviar respostas aos clientes
    
-   ### Route
+   #### Route
    - Define o endpoint de um classe controlador
    
-   ### ApiController
+   #### ApiController
    - indica que esta classe é um Controller de API.
    
-   ### HttpGet
+   #### HttpGet
    - Define qual será o verbo HTTP que um método irá responder após uma requisição para o endpoint da classe
 
    ```c#
@@ -623,8 +625,9 @@ Console.Write(pessoa1.Nome);
    }
 
    ```
-
-  ### FromBody
+   ## Método POST
+  
+   #### FromBody
    - Especifica que o modelo de dados deve ser extraído do corpo da requisição.
 
   ```c#
