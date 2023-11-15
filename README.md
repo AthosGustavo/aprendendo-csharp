@@ -674,6 +674,7 @@ Console.Write(pessoa1.Nome);
   public DbSet<nomeClasse> nomeVariavel { get; set; }
   ```
    -  Define uma propriedade que representa a tabela no banco de dados para a uma determinada entidade.
+   -  Usado para consultar e salvar instâncias da entidade no banco de dados.
 
   #### Relacionamento utilizando public virtual ou OnModelCreating
    - No caso de relacionamentos do tipo 1:1 e 1:N, o public virtual pode ser usado tranquilamente ou até mesmo omitido,pois o Entity Framework irá entender o relacionamento.
