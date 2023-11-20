@@ -982,6 +982,22 @@ protected override void OnModelCreating(ModelBuilder builder)
     .Select(livro => livro.Titulo);
   ```
 
+  ### Método FirstOrDefault()
+   - Usado para recuperar o primeiro elemento de uma sequência que atende a uma condição.
+   - O método aceita uma callback em seu parâmetro e retorna true ou false.
+
+  ```c#
+  List<int> numeros = new List<int> { 1, 2, 3, 4, 5 };
+
+  // Retorna o primeiro número maior que 2, ou 0 se nenhum número atender à condição.
+  int primeiroMaiorQueDois = numeros.FirstOrDefault(num => num > 2);
+  Console.WriteLine(primeiroMaiorQueDois);
+  ```
+  
+
+  
+
+  
   ### Consultas em métodos GET
   #### Retornando todos os registros: Método ToListAsync();
    - Converte e retorna todos os resultados de uma consulta em uma lista de objetos.
