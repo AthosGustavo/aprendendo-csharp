@@ -1,5 +1,19 @@
 # Estudo sobre C#
 <details>
+  <summary>Montagem de Ambiente</summary>
+
+  # Montagem de ambiente
+
+  ## Comandos mais usados
+  ```json
+  dotnet -h 		: lista de comandos
+  dotnet new + template	: comando para criar um projeto
+  dotnet run		: comando para rodar a aplicação
+  mkdir + nomePasta	: comando para criar pasta
+  ```
+  
+</details>
+<details>
   <summary>Arquitetura</summary>
   <details>
     
